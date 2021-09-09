@@ -1,5 +1,5 @@
 import MovieList from "./MovieList";
-import SearchBar from "./SearchBar";
+import Inputs from "./Inputs";
 
 const Base = ({ movies }) => {
   return (
