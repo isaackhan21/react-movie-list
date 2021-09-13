@@ -2,20 +2,37 @@ import Movie from "./Movie";
 import SearchBar from "./Inputs";
 import { useState } from "react";
 import Inputs from "./Inputs";
+import React from "react";
 
-const MovieList = ({ movies }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortRating, setSortRating] = useState("");
+interface IProps {
+  movies: {
+    id: number;
+    title: string;
+    poster_path: string;
+    vote_average: number;
+    overview: string;
+    release_date: string;
+  }[];
+}
 
-  const handleSort = (e) => {
+interface IState {
+  searchTerm: string;
+  sortRating: string;
+}
+
+const MovieList: React.FC<IProps> = ({ movies }) => {
+  const [searchTerm, setSearchTerm] = useState<IState["searchTerm"]>("");
+  const [sortRating, setSortRating] = useState<IState["sortRating"]>("");
+
+  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortRating(e.target.value);
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
-  const sortedMovies = movies.sort((a, b) => {
+  const sortedMovies = movies.sort((a: any, b: any): any => {
     if (sortRating === "Highest Rating") {
       return parseFloat(b.vote_average) - parseFloat(a.vote_average);
     } else if (sortRating === "Lowest Rating") {

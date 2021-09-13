@@ -1,4 +1,11 @@
-const Inputs = ({ handleSort, handleSearch }) => {
+import React from "react";
+
+interface IProps {
+  handleSort: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Inputs: React.FC<IProps> = ({ handleSort, handleSearch }) => {
   return (
     <div className="inputs">
       <input

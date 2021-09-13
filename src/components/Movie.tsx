@@ -1,6 +1,17 @@
+import React from "react";
+
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
-const Movie = ({
+interface IProps {
+  key: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  overview: string;
+  release_date: string;
+}
+
+const Movie: React.FC<IProps> = ({
   title,
   poster_path,
   vote_average,
